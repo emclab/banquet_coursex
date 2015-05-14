@@ -1,0 +1,50 @@
+ <% if @view_in_config && @erb_code %>
+  <%= render inline: ERB.new(@erb_code).result(binding) %>
+  
+  <% else %>
+<div class="pagination"><%= will_paginate models %></div>
+<div class="container-fluid">
+        <div class="page-header clearfix">
+          <div class="pull-left">
+            <h2><%=@title%></h2>
+          </div>
+        </div>
+      <table class="table table-hover">
+              <thead>
+		<tr>
+			<th>#</th>
+			<th><%= t('Name') %></th>
+			<th><%= t('Speciality') %></th>
+			<th><%= t('Integredient') %></th>
+            <th><%= t('Good for') %></th>
+			<th><%= t('Last Updated By') %></th>
+            <th></th>
+	  	</tr>
+                </thead>
+                <tbody>
+		<% models.each do |r| %>
+		  <tr>
+		  	<% if has_action_right?('show', params[:controller], r) %>
+		  	  <td><%= link_to r.id, SUBURI + "/authentify/view_handler?index=1&url=#{course_path(r)}"  %></td>
+		  	<% else %>
+		  	  <td><%= r.id %></td>
+		  	<% end %>
+		  	<td><%= prt(r, :name) %></td>
+		  	<td><%= prt(r, :speciality) %></td> 
+			<td><%= simple_format(h r.ingredient_spec) %></td> 
+			<td><%= prt(r, :good_for_how_many) %></td>
+			<td><%= prt(r, 'last_updated_by.name') %></td>    
+            <td><%= link_to t('Edit'), SUBURI + "/authentify/view_handler?index=1&url=#{CGI::escape edit_course_path(r)}", :class => BUTTONS_CLS['action']  if has_action_right?('update', params[:controller], r) %></td>
+		  </tr>
+		<% end %>
+	  </tbody>
+       </table>
+	
+	<div class="btn-toolbar">
+	   	<%= link_to t('Back'), SUBURI + "/authentify/view_handler?index=0", :class => BUTTONS_CLS['action']  %>
+	    <%= link_to t('New Dish'), SUBURI + "/authentify/view_handler?index=1&url=#{CGI.escape new_course_path()}", :class => BUTTONS_CLS['action']  if has_action_right?('create', params[:controller]) %>
+	</div>
+</div>
+	
+<% end %>
+	
