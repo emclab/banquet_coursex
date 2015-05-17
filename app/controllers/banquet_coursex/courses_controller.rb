@@ -23,7 +23,7 @@ module BanquetCoursex
       @course = BanquetCoursex::Course.new(new_params)
       @course.last_updated_by_id = session[:user_id]
       if @course.save
-        redirect_to URI.escape(SUBURI + "/authentify/view_handler?index=0&msg=Successfully Saved!")
+        redirect_to URI.escape(SUBURI + "/view_handler?index=0&msg=Successfully Saved!")
       else
         @erb_code = find_config_const('course_new_view', 'banquet_coursex')
         flash[:notice] = t('Data Error. Not Saved!')
@@ -41,7 +41,7 @@ module BanquetCoursex
       @course = BanquetCoursex::Course.find_by_id(params[:id])
       @course.last_updated_by_id = session[:user_id]
       if @course.update_attributes(edit_params)
-        redirect_to URI.escape(SUBURI + "/authentify/view_handler?index=0&msg=Successfully Updated!")
+        redirect_to URI.escape(SUBURI + "/view_handler?index=0&msg=Successfully Updated!")
       else
         @erb_code = find_config_const('course_edit_view', 'banquet_coursex')
         flash[:notice] = t('Data Error. Not Updated!')
@@ -62,7 +62,7 @@ module BanquetCoursex
     
     def destroy
       BanquetCoursex::Course.delete(params[:id])
-      redirect_to URI.escape(SUBURI + "/authentify/view_handler?index=0&msg=Successfully Deleted!")
+      redirect_to URI.escape(SUBURI + "/view_handler?index=0&msg=Successfully Deleted!")
     end
     
     protected

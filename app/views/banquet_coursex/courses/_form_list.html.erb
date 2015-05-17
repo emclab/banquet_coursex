@@ -25,7 +25,7 @@
 		<% models.each do |r| %>
 		  <tr>
 		  	<% if has_action_right?('show', params[:controller], r) %>
-		  	  <td><%= link_to r.id, SUBURI + "/authentify/view_handler?index=1&url=#{course_path(r)}"  %></td>
+		  	  <td><%= link_to r.id, SUBURI + "/view_handler?index=1&url=#{course_path(r)}"  %></td>
 		  	<% else %>
 		  	  <td><%= r.id %></td>
 		  	<% end %>
@@ -34,15 +34,15 @@
 			<td><%= simple_format(h r.ingredient_spec) %></td> 
 			<td><%= prt(r, :good_for_how_many) %></td>
 			<td><%= prt(r, 'last_updated_by.name') %></td>    
-            <td><%= link_to t('Edit'), SUBURI + "/authentify/view_handler?index=1&url=#{CGI::escape edit_course_path(r)}", :class => BUTTONS_CLS['action']  if has_action_right?('update', params[:controller], r) %></td>
+            <td><%= link_to t('Edit'), SUBURI + "/view_handler?index=1&url=#{CGI::escape edit_course_path(r)}", :class => BUTTONS_CLS['action']  if has_action_right?('update', params[:controller], r) %></td>
 		  </tr>
 		<% end %>
 	  </tbody>
        </table>
 	
 	<div class="btn-toolbar">
-	   	<%= link_to t('Back'), SUBURI + "/authentify/view_handler?index=0", :class => BUTTONS_CLS['action']  %>
-	    <%= link_to t('New Dish'), SUBURI + "/authentify/view_handler?index=1&url=#{CGI.escape new_course_path()}", :class => BUTTONS_CLS['action']  if has_action_right?('create', params[:controller]) %>
+	   	<%= link_to t('Back'), SUBURI + "/view_handler?index=0", :class => BUTTONS_CLS['action']  %>
+	    <%= link_to t('New Dish'), SUBURI + "/view_handler?index=1&url=#{CGI.escape new_course_path()}", :class => BUTTONS_CLS['action']  if has_action_right?('create', params[:controller]) %>
 	</div>
 </div>
 	

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  mount BanquetCoursex::Engine => "/banquet_coursex"
+  mount BanquetCoursex::Engine => "/banquet_course"
   mount Authentify::Engine => "/authentify"
   mount Commonx::Engine => '/common'
   mount Searchx::Engine => '/search'

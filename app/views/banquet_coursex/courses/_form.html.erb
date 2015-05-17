@@ -24,7 +24,7 @@
       <%= f.input :last_updated_by_name, :label => t('Last Updated By'), :readonly => true, :input_html => {:value => @course.last_updated_by.name} %>
 	  
 	  <div class="form-actions col-sm-offset-<%=BUTTONS_CLS['offset#']%>"> 
-              <%= link_to t('Back'), SUBURI + "/authentify/view_handler?index=0", :class => BUTTONS_CLS['action'] %>
+              <%= link_to t('Back'), SUBURI + "/view_handler?index=0", :class => BUTTONS_CLS['action'] %>
               <%= f.button :submit, t('Save'), :class => BUTTONS_CLS['action'] %>
       </div> 
   

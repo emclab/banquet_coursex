@@ -68,7 +68,7 @@ module BanquetCoursex
         session[:user_id] = @u.id
         task = FactoryGirl.attributes_for(:banquet_coursex_course, :category_id => @cate.id )  
         get 'create', {:course => task, :category_id => @cate.id}
-        expect(response).to redirect_to URI.escape(SUBURI + "/authentify/view_handler?index=0&msg=Successfully Saved!")
+        expect(response).to redirect_to URI.escape(SUBURI + "/view_handler?index=0&msg=Successfully Saved!")
       end
       
       it "should render 'new' if data error" do        
@@ -101,7 +101,7 @@ module BanquetCoursex
         session[:user_id] = @u.id
         task = FactoryGirl.create(:banquet_coursex_course, :category_id => @cate.id)
         get 'update', {:id => task.id, :course => {:name => 'new name'}}
-        expect(response).to redirect_to URI.escape(SUBURI + "/authentify/view_handler?index=0&msg=Successfully Updated!")
+        expect(response).to redirect_to URI.escape(SUBURI + "/view_handler?index=0&msg=Successfully Updated!")
       end
       
       it "should render edit with data error" do
