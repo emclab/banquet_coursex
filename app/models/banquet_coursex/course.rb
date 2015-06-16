@@ -5,10 +5,11 @@ module BanquetCoursex
     belongs_to :last_updated_by, :class_name => 'Authentify::User'
     belongs_to :category, :class_name => 'Commonx::MiscDefinition'
       
-    validates_presence_of :name
+    validates :name, :presence => true
     validates :name, :uniqueness => { :case_sensitive => false, :message => I18n.t('Must be unique!') }
-    validates_numericality_of :category_id, :greater_than => 0, :only_integer => true, :if => 'category_id.present?'
-    validates_numericality_of :good_for_how_many, :greater_than => 0, :only_integer => true, :if => 'good_for_how_many.present?'        
+    validates :category_id, :numericality => {:greater_than => 0, :only_integer => true}, :if => 'category_id.present?'
+    validates :good_for_how_many, :numericality => {:greater_than => 0, :only_integer => true}, :if => 'good_for_how_many.present?'        
+    validates :est_cost, :numericality => {:greater_than => 0, :only_integer => true}, :if => 'est_cost.present?'       
     validate :dynamic_validate 
     
     def dynamic_validate

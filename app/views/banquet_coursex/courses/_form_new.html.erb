@@ -22,8 +22,10 @@
       <%= f.input :speciality, :label => t('Speciality') %>
 	  <%= f.input :ingredient_spec, :label => t('Integredient'), :input_html => {:rows => 3} %>
 	  <%= f.input :cooking_spec, :label => t('Cooking Spec'), :input_html => {:rows => 3} %>
-	  
-	  <div class="form-actions col-sm-offset-<%=BUTTONS_CLS['offset#']%>" >
+	  <%= f.input :category_id, :label => t('Category'), :collection => Commonx::MiscDefinition.where(for_which: 'course_category', active: true).order('ranking_index').map{|r| [r.name, r.id]},
+          :include_blank => true %>
+          
+	  <div class="btn-toolbar" >
             <%= link_to t('Back'), SUBURI + "/view_handler?index=0", :class => BUTTONS_CLS['action'] %>
             <%= f.button :submit, t('Save'), :class => BUTTONS_CLS['action'] %>    
       </div> 

@@ -17,6 +17,14 @@
          <%= @course.name %>
     </div>
  </div>
+ <div class="row">
+    <div class="col-sm-<%=BUTTONS_CLS['left-span#']%> form-group">
+             <b><%= t('Category') %></b>
+    </div>
+    <div class="col-sm-<%=BUTTONS_CLS['right-span#']%> form-group">
+           <%= @course.category.try(:name) %>
+    </div>
+ </div>
   <div class="row">
     <div class="col-sm-<%=BUTTONS_CLS['left-span#']%> form-group">
              <b><%= t('Ingredient Spec') %></b>

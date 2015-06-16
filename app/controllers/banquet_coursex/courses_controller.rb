@@ -74,8 +74,7 @@ module BanquetCoursex
     private   
 
     def new_params
-      params.require(:course).permit(:name,
-       :category_id,
+      params.require(:course).permit(:name, :category_id,
        :ingredient_spec,
        :speciality,
        :unit_price,
@@ -86,7 +85,7 @@ module BanquetCoursex
        :image_name,
        :image_location,
        :star_rating,
-       :wf_state)
+       :wf_state, :est_cost)
     end
 
     def edit_params
@@ -102,7 +101,7 @@ module BanquetCoursex
        :image_name,
        :image_location,
        :star_rating,
-       :wf_state)
+       :wf_state, :est_cost)
     end
 
   end
