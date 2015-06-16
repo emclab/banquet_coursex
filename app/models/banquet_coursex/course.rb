@@ -9,7 +9,7 @@ module BanquetCoursex
     validates :name, :uniqueness => { :case_sensitive => false, :message => I18n.t('Must be unique!') }
     validates :category_id, :numericality => {:greater_than => 0, :only_integer => true}, :if => 'category_id.present?'
     validates :good_for_how_many, :numericality => {:greater_than => 0, :only_integer => true}, :if => 'good_for_how_many.present?'        
-    validates :est_cost, :numericality => {:greater_than => 0, :only_integer => true}, :if => 'est_cost.present?'       
+    validates :cost, :numericality => {:greater_than => 0, :only_integer => true}, :if => 'cost.present?'       
     validate :dynamic_validate 
     
     def dynamic_validate

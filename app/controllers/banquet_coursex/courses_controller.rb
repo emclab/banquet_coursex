@@ -85,7 +85,7 @@ module BanquetCoursex
        :image_name,
        :image_location,
        :star_rating,
-       :wf_state, :est_cost)
+       :wf_state, :cost)
     end
 
     def edit_params
@@ -101,7 +101,7 @@ module BanquetCoursex
        :image_name,
        :image_location,
        :star_rating,
-       :wf_state, :est_cost)
+       :wf_state, :cost)
     end
 
   end
